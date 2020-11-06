@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   body {
-    --accent: #00EF8B;
+    --accent: #2EC5CE;
   }
 `
 

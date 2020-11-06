@@ -2,17 +2,40 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
+import styled from 'styled-components'
+import Container from './container'
+
+const NavigationStyles = styled.ul`
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  li {
+    &:hover, &.active {
+      color: var(--accent);
+    }
+    margin-right: 2.5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+
+`
 
 export default function Navigation() {
   const router = useRouter();
-  console.log(router);
+  console.log(router.pathname)
   return (
-    <ul class="container flex justify-end align-center mx-auto py-6 px-5">
-      <li class="mr-10"><Link class={cn('test', {"active": router.path==="/blog"})} href="/">Home</Link></li>
-      <li class="mr-10"><Link href="/about">About</Link></li>
-      <li class="mr-10"><Link href="/blog">Blog</Link></li>
-      <li class="mr-10"><Link href="/services">Services</Link></li>
-      <li class=""><Link href="/offer">Offer</Link></li>
-    </ul>
+    <Container>
+      <NavigationStyles>
+        <li className={router.pathname === "/" ? 'active' : "" }><Link href="/">Home</Link></li>
+        <li className={router.pathname === "/about" ? 'active' : "" }><Link href="/about">About</Link></li>
+        <li className={router.pathname === "/blog" ? 'active' : "" }><Link href="/blog">Blog</Link></li>
+        <li className={router.pathname === "/services" ? 'active' : "" }><Link href="/services">Services</Link></li>
+        <li className={router.pathname === "/offer" ? 'active' : "" }><Link href="/offer">Offer</Link></li>
+      </NavigationStyles>
+    </Container>
   )
 }

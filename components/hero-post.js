@@ -2,6 +2,50 @@ import Avatar from './avatar'
 import Date from './date'
 import CoverImage from './cover-image'
 import Link from 'next/link'
+import styled from 'styled-components'
+
+const ImageStyles = styled.div`
+  margin-bottom: 2rem;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 4rem
+  }
+`
+
+const PostDetailsStyles = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  margin-bottom: 5rem;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 7rem;
+    gap: 2rem;
+  }
+  h3 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    padding-right: 1rem;
+    font-weight: bold;
+    @media only screen and (min-width: 768px) {
+      font-size: 2.75rem;
+    }
+  }
+`
+const DataStyles = styled.div`
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+`
+
+const ExcerptStyles = styled.div`
+  p {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    margin-bottom: 1rem;
+  }
+`
 
 export default function HeroPost({
   title,
@@ -13,29 +57,29 @@ export default function HeroPost({
 }) {
   return (
     <section>
-      <div className="mb-8 md:mb-16">
+      <ImageStyles>
         <CoverImage
           title={title}
           responsiveImage={coverImage.responsiveImage}
           slug={slug}
         />
-      </div>
-      <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
+      </ImageStyles>
+      <PostDetailsStyles>
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <h3>
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
               <a className="hover:underline">{title}</a>
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <DataStyles>
             <Date dateString={date} />
-          </div>
+          </DataStyles>
         </div>
-        <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+        <ExcerptStyles>
+          <p>{excerpt}</p>
           <Avatar name={author.name} picture={author.picture} />
-        </div>
-      </div>
+        </ExcerptStyles>
+      </PostDetailsStyles>
     </section>
   )
 }

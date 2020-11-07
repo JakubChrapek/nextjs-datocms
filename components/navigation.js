@@ -20,13 +20,10 @@ const NavigationStyles = styled.ul`
       margin-right: 0;
     }
   }
-
-
 `
 
 export default function Navigation() {
   const router = useRouter();
-  console.log(router.pathname)
   return (
     <Container>
       <NavigationStyles>

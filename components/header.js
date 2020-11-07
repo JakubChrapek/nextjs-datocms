@@ -18,22 +18,24 @@ const HeaderStyles = styled.div`
 
 export default function Header() {
   const router = useRouter();
-  const CutName = router.pathname.slice(1).replace("[", "").replace("]", "");
-  const pageName = 
-  router.pathname.slice(1).length === 0 ? "Home" 
-  : 
-  CutName[0].toLocaleUpperCase() + CutName.slice(1);
-  
+  const trimmedPath = router.pathname.slice(1);
+  const name = trimmedPath.length === 0 ? "Home"
+  : trimmedPath[0].toUpperCase() + trimmedPath.slice(1)
+
+  const isPost = trimmedPath.includes("slug");
+
   return (
     <>
       <Navigation />
-      <Container>
-      <HeaderStyles>
-        <h2>
-          {pageName}
-        </h2>
-      </HeaderStyles>
-      </Container>
+      { !isPost && (
+        <Container>
+          <HeaderStyles>
+            <h2>
+              {name}
+            </h2>
+          </HeaderStyles>
+        </Container>
+      )}
     </>
   )
 }

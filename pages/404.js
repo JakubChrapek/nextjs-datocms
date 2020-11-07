@@ -1,5 +1,4 @@
 import Container from '@/components/container';
-import Layout from '@/components/layout';
 import Link from 'next/link';
 import styled from 'styled-components'
 

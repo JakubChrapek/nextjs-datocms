@@ -1,25 +1,16 @@
 import {motion} from 'framer-motion'
 import '../styles/index.css'
 import GlobalStyles from "../styles/globalStyles"
+import Layout from '@/components/layout'
 
 function MyApp({ Component, pageProps, router }) {
   return (
-    <motion.div
-      key={router.route}
-      initial="pageInitial"
-      animate="pageAnimate"
-      variants={{
-        pageInitial: {
-          opacity: 0,
-        },
-        pageAnimate: {
-          opacity: 1,
-        }
-      }}
+    <Layout
+      keyName={router.route}
     >
       <GlobalStyles />
       <Component {...pageProps} />
-    </motion.div>
+    </Layout>
   )
 }
 

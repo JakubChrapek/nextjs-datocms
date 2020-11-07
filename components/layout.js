@@ -2,18 +2,35 @@ import Alert from './alert'
 import Footer from './footer'
 import Header from './header'
 import Meta from './meta'
-import Navigation from './navigation'
+import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
-export default function Layout({ preview, children }) {
+const StyledWrapper = styled.div`
+  min-height: 100vh;
+`
+
+export default function Layout({ preview, children, keyName }) {
   return (
-    <>
+    <motion.div
+      key={keyName}
+      initial="initial"
+      animate="animate"
+      variants={{
+        initial: {
+          opacity: 0,
+        },
+        animate: {
+          opacity: 1,
+        }
+      }}
+    >
       <Meta />
       <Header />
-      <div className="min-h-screen">
+      <StyledWrapper>
         <Alert preview={preview} />
         <main>{children}</main>
-      </div>
+      </StyledWrapper>
       <Footer />
-    </>
+    </motion.div>
   )
 }

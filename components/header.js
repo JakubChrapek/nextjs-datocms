@@ -5,11 +5,14 @@ import styled from 'styled-components'
 
 const HeaderStyles = styled.div`
   h2 {
-    font-size: 2.25rem;
+    font-size: 4rem;
     letter-spacing: -0.04em;
     margin: 2rem 0 5rem;
     line-height: 1.2;
     font-weight: 700;
+    @media only screen and (min-width: 1025px) {
+      font-size: 4.5rem;
+    }
   }
 `
 

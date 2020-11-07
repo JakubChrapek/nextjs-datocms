@@ -1,12 +1,40 @@
 import PostPreview from './post-preview'
+import styled from 'styled-components'
 
+const MorePostsStyles = styled.section`
+  h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    letter-spacing: -.04em;
+    line-height: 1.2;
+    @media only screen and (max-width: 768px) {
+      font-size: 4.5rem;
+    }
+  }
+  > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5rem;
+    margin-bottom: 8rem;
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4rem;
+      row-gap: 8rem;
+    } 
+    @media only screen and (min-width: 1440px) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 8rem;
+    } 
+  }
+`
 export default function MoreStories({ posts }) {
   return (
-    <section>
-      <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+    <MorePostsStyles>
+      <h2>
         More Stories
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-16 lg:col-gap-32 row-gap-20 md:row-gap-32 mb-32">
+      <div>
         {posts.map((post) => (
           <PostPreview
             key={post.slug}
@@ -19,6 +47,6 @@ export default function MoreStories({ posts }) {
           />
         ))}
       </div>
-    </section>
+    </MorePostsStyles>
   )
 }

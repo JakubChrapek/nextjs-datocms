@@ -21,7 +21,6 @@ const NotFoundPageStyles = styled.div`
 
 const Page = () => {
   return (
-    <Layout>
     <Container>
       <NotFoundPageStyles>
         <h2>
@@ -30,7 +29,6 @@ const Page = () => {
         <Link href="/">&larr; Back to home</Link>
       </NotFoundPageStyles>
     </Container>
-    </Layout>
   );
 }
 

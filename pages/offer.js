@@ -1,18 +1,15 @@
 import Container from '@/components/container'
-import MoreStories from '@/components/more-stories'
-import HeroPost from '@/components/hero-post'
-import Layout from '@/components/layout'
 import { getAllPostsForHome } from '@/lib/api'
 import Head from 'next/head'
 
-export default function Index() {
+export default function Offer() {
   return (
     <>
       <Head>
-        <title>Home Page Title | company name</title>
+        <title>Offer | company name</title>
       </Head>
       <Container>
-        <h3>Home page content</h3>
+        <h3>Offer page content</h3>
       </Container>
     </>
   )
